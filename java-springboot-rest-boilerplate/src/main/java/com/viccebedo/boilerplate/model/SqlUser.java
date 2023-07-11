@@ -16,7 +16,7 @@ import jakarta.persistence.Table;
  */
 @Entity
 @Table(schema = "boilerplate", name = "users")
-public class User {
+public class SqlUser {
 
     private @Id
     @GeneratedValue

@@ -2,15 +2,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.viccebedo.boilerplate.db;
+package com.viccebedo.boilerplate.service;
 
-import com.viccebedo.boilerplate.model.User;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author vcebedo
  */
-public interface UserRepository extends CrudRepository<User, Object> {
+@Service
+public class SampleServiceImpl implements SampleService {
 
 }
