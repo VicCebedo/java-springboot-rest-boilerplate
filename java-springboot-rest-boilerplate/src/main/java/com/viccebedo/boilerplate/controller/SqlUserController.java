@@ -11,33 +11,33 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import com.viccebedo.boilerplate.dao.SqlUserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  *
  * @author Vic Cebedo <cebedo.vii@gmail.com>
  */
 @RestController
+@RequestMapping("/sql")
 public class SqlUserController {
 
-    private final SqlUserRepository sqlUserRepo;
-
-    SqlUserController(SqlUserRepository repository) {
-        this.sqlUserRepo = repository;
-    }
+    @Autowired
+    private SqlUserRepository sqlUserRepository;
 
     @GetMapping("/users")
-    Iterable<SqlUser> allUser() {
-        return this.sqlUserRepo.findAll();
+    Iterable<SqlUser> getAllUsers() {
+        return this.sqlUserRepository.findAll();
     }
 
     @GetMapping("/user/{id}")
     Optional<SqlUser> userById(@PathVariable Long id) {
-        return this.sqlUserRepo.findById(id);
+        return this.sqlUserRepository.findById(id);
     }
 
     @DeleteMapping("/user/{id}")
     void deleteUser(@PathVariable Long id) {
-        this.sqlUserRepo.deleteById(id);
+        this.sqlUserRepository.deleteById(id);
     }
 
 //
