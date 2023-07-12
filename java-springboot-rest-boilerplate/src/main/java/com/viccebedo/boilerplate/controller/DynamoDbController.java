@@ -9,13 +9,13 @@ import com.viccebedo.boilerplate.model.DynamoDbData;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import software.amazon.awssdk.enhanced.dynamodb.DynamoDbEnhancedClient;
 import software.amazon.awssdk.enhanced.dynamodb.DynamoDbTable;
 import software.amazon.awssdk.enhanced.dynamodb.TableSchema;
+import software.amazon.awssdk.regions.Region;
 import software.amazon.awssdk.services.dynamodb.DynamoDbClient;
 
 /**
@@ -26,13 +26,15 @@ import software.amazon.awssdk.services.dynamodb.DynamoDbClient;
 @RequestMapping("/dynamodb")
 public class DynamoDbController {
 
-    @Autowired
-    private DynamoDbClient dynamoDbClient;
-
     @GetMapping("/locations")
     List<DynamoDbData> getAllLocations() {
+
+        DynamoDbClient dynamoDbClient = DynamoDbClient.builder()
+                .region(Region.AP_SOUTHEAST_2)
+                .build();
+
         DynamoDbEnhancedClient enhancedClient = DynamoDbEnhancedClient.builder()
-                .dynamoDbClient(this.dynamoDbClient)
+                .dynamoDbClient(dynamoDbClient)
                 .build();
 
         // Get the table and all results.
