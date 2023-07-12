@@ -4,14 +4,15 @@
  */
 package com.viccebedo.boilerplate.dao;
 
-import com.viccebedo.boilerplate.model.LocationDynamoDb;
-import org.springframework.data.repository.CrudRepository;
+import com.viccebedo.boilerplate.model.MongoDbData;
+import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author vcebedo
  */
-@org.socialsignin.spring.data.dynamodb.repository.EnableScan
-public interface LocationDynamoDbRepository extends CrudRepository<LocationDynamoDb, Object> {
+@Repository
+public interface MongoDbRepository extends MongoRepository<MongoDbData, Object> {
 
 }

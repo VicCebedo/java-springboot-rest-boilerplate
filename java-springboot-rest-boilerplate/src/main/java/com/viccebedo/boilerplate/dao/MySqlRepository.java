@@ -4,15 +4,13 @@
  */
 package com.viccebedo.boilerplate.dao;
 
-import com.viccebedo.boilerplate.model.MongoListing;
-import org.springframework.data.mongodb.repository.MongoRepository;
-import org.springframework.stereotype.Repository;
+import com.viccebedo.boilerplate.model.MySqlData;
+import org.springframework.data.repository.CrudRepository;
 
 /**
  *
  * @author vcebedo
  */
-@Repository
-public interface MongoListingRepository extends MongoRepository<MongoListing, Object> {
+public interface MySqlRepository extends CrudRepository<MySqlData, Object> {
 
 }

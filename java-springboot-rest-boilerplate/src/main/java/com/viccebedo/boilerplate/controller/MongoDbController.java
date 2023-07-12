@@ -4,8 +4,7 @@
  */
 package com.viccebedo.boilerplate.controller;
 
-import com.viccebedo.boilerplate.dao.MongoListingRepository;
-import com.viccebedo.boilerplate.model.MongoListing;
+import com.viccebedo.boilerplate.model.MongoDbData;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,26 +12,27 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import com.viccebedo.boilerplate.dao.MongoDbRepository;
 
 /**
  *
  * @author vcebedo
  */
 @RestController
-@RequestMapping("/mongo")
-public class MongoListingController {
+@RequestMapping("/mongodb")
+public class MongoDbController {
 
     @Autowired
-    private MongoListingRepository mongoListingRepository;
+    private MongoDbRepository mongoDbRepository;
 
     @GetMapping("/listings")
-    List<MongoListing> getAllMongoListings() {
-        return this.mongoListingRepository.findAll();
+    List<MongoDbData> getAllListings() {
+        return this.mongoDbRepository.findAll();
     }
 
     @GetMapping("/listing/{id}")
-    Optional<MongoListing> getMongoListingById(@PathVariable String id) {
-        return this.mongoListingRepository.findById(id);
+    Optional<MongoDbData> getListingById(@PathVariable String id) {
+        return this.mongoDbRepository.findById(id);
     }
 
 }

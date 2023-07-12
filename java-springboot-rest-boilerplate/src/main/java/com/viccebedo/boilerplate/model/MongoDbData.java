@@ -12,7 +12,7 @@ import org.springframework.data.mongodb.core.mapping.Field;
  * @author vcebedo
  */
 @Document(collection = "listingsAndReviews")
-public class MongoListing {
+public class MongoDbData {
 
     private @Field
     String id;
