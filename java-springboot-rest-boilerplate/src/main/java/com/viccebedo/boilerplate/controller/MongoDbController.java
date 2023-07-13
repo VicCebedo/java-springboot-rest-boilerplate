@@ -27,7 +27,7 @@ public class MongoDbController {
 
     @GetMapping("/listings")
     List<MongoDbData> getAllListings() {
-        return this.mongoDbRepository.findAll();
+        return this.mongoDbRepository.findAll().subList(0, 5);
     }
 
     @GetMapping("/listing/{id}")
